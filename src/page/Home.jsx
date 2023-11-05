@@ -12,7 +12,7 @@ const Home = () => {
     <>
     <motion.div
     style={{
-      scalex: scrollYProgress,
+      scaleX: scrollYProgress,
       position: "fixed",
       top: 0,
       left: 0,
