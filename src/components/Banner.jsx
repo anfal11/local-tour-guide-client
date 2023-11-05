@@ -18,7 +18,7 @@ const Banner = () => {
     loop={0}
     typeSpeed={75}
     words={[
-        'Start your journey with TourEase!',
+        'Start your journey with TravelEase!',
       'Welcome here!',
       'Explore more and more places with us!'
     ]}
