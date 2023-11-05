@@ -1,24 +1,35 @@
+import { Link } from "react-router-dom";
+
 const Login = () => {
     return (
-      <div>
-        <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <div className="max-w-2xl mx-auto mt-40">
+        <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm">
           <div className="p-4 sm:p-7">
             <div className="text-center">
-              <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Sign up</h1>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                Already have an account?{' '}
-                <a className="text-blue-600 decoration-2 hover:underline font-medium" href="../examples/html/signin.html">
-                  Sign in here
-                </a>
+              <h1 className="block text-2xl font-bold text-gray-800">Log in</h1>
+              <p className="mt-2 text-sm text-gray-600">
+               Don&apos;t have an account?
+                <Link to='/register'
+                  className="text-[#4D96B3] decoration-2 hover:underline font-medium"
+                  
+                >
+                   Register here
+                </Link>
               </p>
             </div>
   
             <div className="mt-5">
               <button
                 type="button"
-                className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                className="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-[#4D96B3] transition-all text-sm"
               >
-                <svg className="w-4 h-auto" width="46" height="47" viewBox="0 0 46 47" fill="none">
+                <svg
+                  className="w-4 h-auto"
+                  width="46"
+                  height="47"
+                  viewBox="0 0 46 47"
+                  fill="none"
+                >
                   <path
                     d="M46 24.0287C46 22.09 45.8533 20.68 45.5013 19.2112H23.4694V27.9356H36.4069C36.1429 30.1094 34.7347 33.37 31.5957 35.5731L31.5663 35.8669L38.5191 41.2719L38.9885 41.3306C43.4477 37.2181 46 31.1669 46 24.0287Z"
                     fill="#4285F4"
@@ -36,17 +47,17 @@ const Login = () => {
                     fill="#EB4335"
                   />
                 </svg>
-                Sign up with Google
+                Log in with Google
               </button>
   
-              <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600">
+              <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 ">
                 Or
               </div>
   
               <form>
                 <div className="grid gap-y-4">
                   <div>
-                    <label htmlFor="email" className="block text-sm mb-2 dark:text-white">
+                    <label htmlFor="email" className="block text-sm mb-2">
                       Email address
                     </label>
                     <div className="relative">
@@ -54,32 +65,16 @@ const Login = () => {
                         type="email"
                         id="email"
                         name="email"
-                        className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                        className="py-3 px-4 block w-full border rounded-md text-sm focus:border-[#4D96B3] focus:ring-[#4D96B3]"
                         required
-                        aria-describedby="email-error"
+                        placeholder="Enter your email"
                       />
-                      <div className="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3">
-                        <svg
-                          className="h-5 w-5 text-red-500"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
-                          />
-                        </svg>
-                      </div>
+                      
                     </div>
-                    <p className="hidden text-xs text-red-600 mt-2" id="email-error">
-                      Please include a valid email address so we can get back to you
-                    </p>
                   </div>
   
                   <div>
-                    <label htmlFor="password" className="block text-sm mb-2 dark:text-white">
+                    <label htmlFor="password" className="block text-sm mb-2">
                       Password
                     </label>
                     <div className="relative">
@@ -87,87 +82,32 @@ const Login = () => {
                         type="password"
                         id="password"
                         name="password"
-                        className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                        className="py-3 px-4 block w-full border rounded-md text-sm focus:border-[#4D96B3] focus:ring-[#4D96B3]"
                         required
-                        aria-describedby="password-error"
+                        placeholder="Enter your password"
                       />
-                      <div className="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3">
-                        <svg
-                          className="h-5 w-5 text-red-500"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
-                          />
-                        </svg>
-                      </div>
                     </div>
-                    <p className="hidden text-xs text-red-600 mt-2" id="password-error">
-                      8+ characters required
-                    </p>
                   </div>
   
-                  <div>
-                    <label htmlFor="confirm-password" className="block text-sm mb-2 dark:text-white">
-                      Confirm Password
-                    </label>
-                    <div className="relative">
-                      <input
-                        type="password"
-                        id="confirm-password"
-                        name="confirm-password"
-                        className="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
-                        required
-                        aria-describedby="confirm-password-error"
-                      />
-                      <div className="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3">
-                        <svg
-                          className="h-5 w-5 text-red-500"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          viewBox="0 0 16 16"
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                    <p className="hidden text-xs text-red-600 mt-2" id="confirm-password-error">
-                      Password does not match the password
-                    </p>
-                  </div>
   
                   <div className="flex items-center">
-                    <div className="flex">
-                      <input
-                        id="remember-me"
-                        name="remember-me"
-                        type="checkbox"
-                        className="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                      />
-                    </div>
                     <div className="ml-3">
-                      <label htmlFor="remember-me" className="text-sm dark:text-white">
-                        I accept the{' '}
-                        <a className="text-blue-600 decoration-2 hover:underline font-medium" href="#">
-                          Terms and Conditions
-                        </a>
+                      <label htmlFor="remember-me" className="text-sm">
+                        <Link
+                          className="text-[#4D96B3] decoration-2 hover:underline font-medium"
+                          to="#"
+                        >
+                          Forget password?
+                        </Link>
                       </label>
                     </div>
                   </div>
   
                   <button
                     type="submit"
-                    className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                    className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#4D96B3] text-white hover:bg-[#4D96C5] focus:outline-none focus:ring-2 focus:ring-[#4D96B3] focus:ring-offset-2 transition-all text-sm"
                   >
-                    Sign up
+                    Log in
                   </button>
                 </div>
               </form>
