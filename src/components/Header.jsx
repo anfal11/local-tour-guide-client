@@ -19,7 +19,7 @@ const Header = () => {
                   src="https://i.ibb.co/pfQC28M/travel.png"
                   alt=""
                 />
-                <h1 className="font-mono">TourNest</h1>
+                <h1 className="font-mono">TourEase</h1>
               </div>
             </NavLink>
             <div className="md:hidden">
