@@ -62,8 +62,8 @@ const Header = () => {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? "font-medium text-gray-500 hover:text-gray-400 border-b-2 border-blue-600"
-                    : ""
+                    ? "text-lg font-medium text-gray-500 hover:text-gray-400 border-b-2 border-green-600"
+                    : "text-lg"
                 }
                 to="/"
                 aria-current="page"
@@ -73,8 +73,8 @@ const Header = () => {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? "font-medium text-gray-500 hover:text-gray-400 border-b-2 border-blue-600"
-                    : ""
+                    ? "text-lg font-medium text-gray-500 hover:text-gray-400 border-b-2 border-green-600"
+                    : "text-lg"
                 }
                 to="/services"
               >
@@ -83,8 +83,8 @@ const Header = () => {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? "flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600md:border-gray-300"
-                    : ""
+                    ? "text-lg flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600md:border-gray-300"
+                    : "text-lg"
                 }
                 to="/login"
               >
@@ -105,8 +105,8 @@ const Header = () => {
               <NavLink
                 className={({ isActive }) =>
                   isActive
-                    ? "font-medium text-gray-500 hover:text-gray-400 border-b-2 border-blue-600"
-                    : ""
+                    ? "text-lg font-medium text-gray-500 hover:text-gray-400 border-b-2 border-green-600"
+                    : "text-lg"
                 }
                 to="/dashboard"
               >
