@@ -1,9 +1,9 @@
 const Testimonial = () => {
     return (
-        <div>
+        <div className="mt-20">
         <h1 className="text-4xl font-extrabold text-center text-gray-400 mt-10 underline"> Testimonial </h1>
     <div className="overflow-hidden ">
-      <div className="relative max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="relative max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)]">
         <div className="max-w-2xl w-3/4 lg:w-1/2 mb-6 sm:mb-10 md:mb-16">
         
           <h2 className="text-2xl sm:text-3xl lg:text-4xl text-gray-400 font-semibold">

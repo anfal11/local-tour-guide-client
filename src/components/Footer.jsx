@@ -8,6 +8,11 @@ const Footer = () => {
     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
       <div className="col-span-full lg:col-span-1">
         <a className="flex-none text-xl font-semibold text-white" href="#" aria-label="Brand">TravelEase</a>
+        <img
+                  className="w-12 mt-4"
+                  src="https://i.ibb.co/pfQC28M/travel.png"
+                  alt=""
+                />
       </div>
   
 
@@ -47,7 +52,7 @@ const Footer = () => {
               Subscribe
             </a>
           </div>
-          <p className="mt-3 text-sm text-black">
+          <p className="mt-3 text-sm text-white">
             Get notified about exciting travel deals and new destinations.
           </p>
         </form>
@@ -58,7 +63,7 @@ const Footer = () => {
 
     <div className="mt-5 sm:mt-12 grid gap-y-2 sm:gap-y-0 sm:flex sm:justify-between sm:items-center">
       <div className="flex justify-between items-center">
-        <p className="text-sm text-black">© 2023 TravelEase. All rights reserved.</p>
+        <p className="text-sm text-white">© 2023 TravelEase. All rights reserved.</p>
       </div>
    
 
