@@ -4,7 +4,7 @@ import app from "../Firebase/Firebase.config";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 export const AuthContext = createContext(null);
-const auth = getAuth(app)
+const auth = getAuth(app);
 
 const AuthProvider = ({children}) => {
 
@@ -23,7 +23,7 @@ const AuthProvider = ({children}) => {
 
   const logOut = () => {
     setLoading(true);
-    return signOut();
+    return signOut(auth);
   }
 
   const googleProvider = new GoogleAuthProvider();

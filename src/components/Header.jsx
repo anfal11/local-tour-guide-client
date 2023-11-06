@@ -1,6 +1,24 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
+import toast from "react-hot-toast";
 
 const Header = () => {
+
+  const {user, logOut} = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogOut = async () => {
+    try {
+      await logOut();
+      toast.success("User Logout successfully");
+      navigate("/");
+    }
+    catch (err){
+      toast.error(err.message);
+    }
+  }
+
   return (
     <div>
       <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
@@ -80,7 +98,12 @@ const Header = () => {
               >
                 Services
               </NavLink>
-              <NavLink
+{
+  user?.email ? <div>
+    <h1 onClick={handleLogOut} className="text-lg">Log Out</h1>
+  </div> 
+  : 
+  <NavLink
                 className={({ isActive }) =>
                   isActive
                     ? "text-lg flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600md:border-gray-300"
@@ -102,6 +125,7 @@ const Header = () => {
                   Log in
                 </div>
               </NavLink>
+}
               <NavLink
                 className={({ isActive }) =>
                   isActive
