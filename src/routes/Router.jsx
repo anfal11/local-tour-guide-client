@@ -2,14 +2,14 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root";
 import Home from "../page/Home";
 import Services from "../page/Services";
-// import Dashboard from "../page/Dashboard";
+import Dashboard from "../page/Dashboard";
 import Login from "../page/Login";
 import Register from "../page/Register";
 import ErrorPage from "../page/ErrorPage";
 import MyServices from "../components/MyServices";
 import AddServices from "../components/AddServices";
 import MySchedule from "../components/MySchedule";
-// import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
 
 const Router = createBrowserRouter([
   {
@@ -25,25 +25,25 @@ const Router = createBrowserRouter([
         path: "services",
         element: <Services />,
       },
-    //   {
-    //     path: "/dashboard",
-    //     element: (
-    //       <PrivateRoute>
-    //         <Dashboard />
-    //       </PrivateRoute>
-    //     ),
-    //   },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
+      },
    {
     path: '/myServices',
-    element: <MyServices />,
+    element: <PrivateRoute><MyServices /></PrivateRoute>,
    },
    {
     path: '/addServices',
-    element: <AddServices />,
+    element: <PrivateRoute><AddServices /></PrivateRoute>,
    },
    {
     path: '/MySchedule',
-    element: <MySchedule />,
+    element: <PrivateRoute><MySchedule /></PrivateRoute>,
    }
     ],
   },
