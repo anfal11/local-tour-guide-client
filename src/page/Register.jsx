@@ -1,6 +1,46 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
+
+    const { createUser, userUpdateProfile} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        const form = new FormData(e.target);
+        const name = form.get("name");
+        const photo = form.get('photo');
+        const email = form.get("email");
+        const password = form.get("password");
+
+        const user = {
+            name,
+            photo,
+            email,
+            password,
+        }
+        console.log(user);
+
+        createUser(email, password)
+        .then(res => {
+            userUpdateProfile(name, photo)
+            .then(res => {
+                toast.success('User created successfully');
+                navigate('/login');
+            })
+            .catch(err=>{
+                toast.error(err.message);
+            });
+
+        })
+        .catch(err=>{
+            toast.error(err.message);
+        });
+        
+    }
   return (
     <div className="max-w-2xl mx-auto mt-40">
       <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm">
@@ -20,7 +60,7 @@ const Register = () => {
 
           <div className="mt-5">
 
-            <form>
+            <form onSubmit={handleRegister}>
               <div className="grid gap-y-4">
                 <div>
                   <label htmlFor="email" className="block text-sm mb-2">

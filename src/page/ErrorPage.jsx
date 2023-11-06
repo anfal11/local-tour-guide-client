@@ -14,7 +14,7 @@ const ErrorPage = () => {
           <Link to="/">
             <button
               type="button"
-              className="py-3 mt-10 flex px-4 justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+              className="py-3 mt-10 flex px-4 justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-[#4D96B3] text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
             >
               Go Back Home
             </button>

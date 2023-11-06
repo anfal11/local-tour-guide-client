@@ -1,7 +1,23 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Login = () => {
     return (
+        <>
+                <motion.div
+      className="box"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.3,
+        ease: [0, 0.71, 0.2, 1.01],
+        scale: {
+          type: "spring",
+          damping: 5,
+          stiffness: 100,
+          restDelta: 0.001
+        }
+      }}>
         <div className="max-w-2xl mx-auto mt-40">
         <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm">
           <div className="p-4 sm:p-7">
@@ -115,6 +131,8 @@ const Login = () => {
           </div>
         </div>
       </div>
+      </motion.div>
+        </>
     );
   };
   
