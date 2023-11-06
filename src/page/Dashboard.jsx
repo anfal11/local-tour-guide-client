@@ -4,7 +4,7 @@ const Dashboard = () => {
     return (
         <div>
         <Header />
-    Dashboard created
+            Dashboard
         </div>
     );
 };
