@@ -100,9 +100,9 @@ const Header = () => {
                     ? "text-lg font-medium text-gray-500 hover:text-gray-400 border-b-2 border-[#4D96B3]"
                     : "text-lg"
                 }
-                to="/services"
+                to="/allService"
               >
-                Services
+                All Service
               </NavLink>
               {user?.email ? (
                 <div>

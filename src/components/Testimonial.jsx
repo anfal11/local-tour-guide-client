@@ -73,7 +73,7 @@ const Testimonial = () => {
                   </div>
                   <div className="grow ml-3">
                     <p className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
-                      md. Shanto Hosen
+                      Md. Shanto Hosen
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
                       Entrepreneur | Happy customer
