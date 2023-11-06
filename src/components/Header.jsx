@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import toast from "react-hot-toast";
 
 const Header = () => {
-
+  const [userProfile, setUserProfile] = useState(null);
   const {user, logOut} = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -18,6 +18,13 @@ const Header = () => {
       toast.error(err.message);
     }
   }
+
+  useEffect(()=> {
+    setUserProfile({
+      name: user?.displayName,
+      photo: user?.photoURL,
+    })
+  },[user?.displayName, user?.photoURL])
 
   return (
     <div>
@@ -100,7 +107,7 @@ const Header = () => {
               </NavLink>
 {
   user?.email ? <div>
-    <h1 onClick={handleLogOut} className="text-lg">Log Out</h1>
+    <h1 onClick={handleLogOut} className="text-lg cursor-pointer">Log Out</h1>
   </div> 
   : 
   <NavLink
@@ -126,7 +133,9 @@ const Header = () => {
                 </div>
               </NavLink>
 }
-              <NavLink
+              {
+                user?.email && (
+                  <NavLink
                 className={({ isActive }) =>
                   isActive
                     ? "text-lg font-medium text-gray-500 hover:text-gray-400 border-b-2 border-[#4D96B3]"
@@ -136,13 +145,22 @@ const Header = () => {
               >
                 Dashboard
               </NavLink>
+                )
+              }
+              {
+                user?.email && (
+                  <h1 className="text-lg border p-1 rounded-md shadow-md"> {userProfile?.name} </h1>
+                )
+              }
 
-              <NavLink
-                className="font-medium text-gray-500 hover:text-gray-400 md:py-6"
-                href="#"
-              >
-                <img src="" alt="" />
-              </NavLink>
+              {
+                user?.email && <>
+                <div className="relative inline-block">
+  <img className="inline-block h-[2.875rem] w-[2.875rem] rounded-full ring-2 ring-white dark:ring-gray-800" src={userProfile?.photo} alt="Image Description"/>
+  <span className="absolute top-0 right-0 block h-3 w-3 rounded-full ring-2 ring-white bg-green-400"></span>
+</div>
+                </>
+              }
             </div>
           </div>
         </nav>
