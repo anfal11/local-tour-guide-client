@@ -1,7 +1,7 @@
 const Contact = () => {
   return (
     <div>
-      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 mx-auto">
         <div className="max-w-2xl lg:max-w-5xl mx-auto">
           <div className="text-center">
             <h1 className="text-3xl font-extrabold text-gray-400 underline sm:text-4xl mb-4">
@@ -18,7 +18,7 @@ const Contact = () => {
                 Fill in the form
               </h2>
 
-              <form>
+              
                 <div className="grid gap-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -93,7 +93,7 @@ const Contact = () => {
                     We&apos;ll get back to you in 1-2 business days.
                   </p>
                 </div>
-              </form>
+              
             </div>
 
             <div className="divide-y divide-gray-200 dark:divide-gray-800">

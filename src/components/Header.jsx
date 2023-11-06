@@ -136,10 +136,7 @@ const Header = () => {
               )}
               {user?.email && (
                 <div className="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:[--trigger:hover] md:py-4">
-                  <button
-                    type="button"
-                    className="text-lg mt-2 "
-                  >
+                  <button type="button" className="text-lg mt-2 ">
                     Dashboard
                     <svg
                       className="ml-2 w-2.5 h-2.5 text-gray-600"
@@ -158,12 +155,11 @@ const Header = () => {
                     </svg>
                   </button>
                   <div className="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:shadow-md rounded-lg p-2 md:dark:border before:absolute top-full md:border before:-top-5 before:left-0 before:w-full before:h-5 flex flex-col">
-                  
-                   <Link
+                    <Link
                       className="text-lg font-medium text-gray-500 hover:text-gray-400"
-                      to="/myServices"
+                      to="/manageService"
                     >
-                      My Services
+                      Manage Service
                     </Link>
 
                     <Link
@@ -178,9 +174,8 @@ const Header = () => {
                     >
                       My Schedule
                     </Link>
-                   </div>
                   </div>
-              
+                </div>
               )}
               {user?.email && (
                 <h1 className="text-lg border p-1 rounded-md shadow-md">
@@ -197,7 +192,7 @@ const Header = () => {
                       src={userProfile?.photo}
                       alt="Image Description"
                     />
-                    <span className="absolute top-0 right-0 block h-3 w-3 rounded-full ring-2 ring-white bg-green-400"></span>
+                    <span className="absolute top-0 md:right-0 block h-3 w-3 rounded-full ring-2 ring-white bg-green-400"></span>
                   </div>
                 </>
               )}

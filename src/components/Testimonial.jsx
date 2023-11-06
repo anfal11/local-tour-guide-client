@@ -1,6 +1,6 @@
 const Testimonial = () => {
     return (
-        <div className="mt-20">
+        <div className="mt-32 mb-32">
         <h1 className="text-4xl font-extrabold text-center text-gray-400 mt-10 underline"> Testimonial </h1>
     <div className="overflow-hidden ">
       <div className="relative max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)]">

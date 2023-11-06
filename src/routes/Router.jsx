@@ -5,11 +5,11 @@ import Dashboard from "../page/Dashboard";
 import Login from "../page/Login";
 import Register from "../page/Register";
 import ErrorPage from "../page/ErrorPage";
-import MyServices from "../components/MyServices";
 import AddServices from "../components/AddServices";
 import MySchedule from "../components/MySchedule";
 import PrivateRoute from "./PrivateRoute";
 import AllService from "../page/AllService";
+import ManageService from "../components/ManageService";
 
 const Router = createBrowserRouter([
   {
@@ -34,8 +34,8 @@ const Router = createBrowserRouter([
         ),
       },
    {
-    path: '/myServices',
-    element: <PrivateRoute><MyServices /></PrivateRoute>,
+    path: '/manageService',
+    element: <PrivateRoute><ManageService /></PrivateRoute>,
    },
    {
     path: '/addServices',

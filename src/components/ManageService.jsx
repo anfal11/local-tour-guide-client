@@ -1,12 +1,12 @@
 import Header from "./Header";
 
-const myServices = () => {
+const ManageService = () => {
     return (
         <div>
         <Header />
-            My services
+            manage service
         </div>
     );
 };
 
-export default myServices;
+export default ManageService;

@@ -5,7 +5,7 @@ import { ImAccessibility } from "react-icons/im";
 import { motion } from "framer-motion";
 const Benefits = () => {
   return (
-    <div className="mt-10 lg:max-w-7xl lg:mx-auto md:px-44 lg:p-0">
+    <div className="mt-10 lg:max-w-7xl lg:mx-auto md:px-44 lg:p-0 mb-32">
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}

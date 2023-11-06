@@ -5,6 +5,7 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Testimonial from "../components/Testimonial";
+import PopularServices from "../components/PopularServices";
 
 const Home = () => {
  const { scrollYProgress } = useScroll();
@@ -27,6 +28,7 @@ const Home = () => {
     <Header />
     <div>
       <Banner />
+      <PopularServices />
       <Benefits />
       <Testimonial />
       <Contact />
