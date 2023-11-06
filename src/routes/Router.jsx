@@ -10,6 +10,8 @@ import MySchedule from "../components/MySchedule";
 import PrivateRoute from "./PrivateRoute";
 import AllService from "../page/AllService";
 import ManageService from "../components/ManageService";
+import SIngleService from "../components/SIngleService";
+
 
 const Router = createBrowserRouter([
   {
@@ -24,6 +26,11 @@ const Router = createBrowserRouter([
       {
         path: "allService",
         element: <AllService />,
+      },
+      {
+        path: "services/:serviceName",
+        element: <SIngleService />,
+        loader: ({params}) => fetch(`http://localhost:5000/api/v1/services/${params.serviceName}`)
       },
       {
         path: "/dashboard",

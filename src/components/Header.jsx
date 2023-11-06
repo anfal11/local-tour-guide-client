@@ -102,7 +102,7 @@ const Header = () => {
                 }
                 to="/allService"
               >
-                All Service
+                All Services
               </NavLink>
               {user?.email ? (
                 <div>

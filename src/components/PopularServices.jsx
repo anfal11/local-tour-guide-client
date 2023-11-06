@@ -3,8 +3,11 @@ import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+
 const PopularServices = () => {
+
   const [services, setServices] = useState([]);
+
 
   useEffect(() => {
     try {
@@ -52,7 +55,7 @@ const PopularServices = () => {
                 <span className="block text-start mb-1 text-base font-semibold uppercase text-[#4D96B3]">
                   Price: {service.servicePrice}
                 </span>
-                <h3 className="text-xl mb-3 text-start text-gray-500">
+                <h3 className="mb-3 text-start text-gray-500">
                   <span className="font-semibold">Service Provider Name:</span>{" "}
                   {service.serviceProvider.name}
                 </h3>
@@ -65,8 +68,8 @@ const PopularServices = () => {
                 </div>
               </div>
               <div className="mt-auto flex border-t border-gray-200 divide-x divide-gray-200">
-                <Link
-                  to={`/services/${service._id}`}
+              <Link
+                  to={`/services/${service.serviceName}`}
                   className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-[#4D96B3] text-white shadow-sm disabled:opacity-50 hover:bg-[#1e6a88] hover:text-white"
                 >
                   View Details
@@ -76,6 +79,16 @@ const PopularServices = () => {
           </motion.button>
         ))}
       </div>
+
+
+<div className="flex justify-center mt-10">
+<Link to='/allService'>
+<button className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#4D96B3] text-white hover:bg-green-600 ">
+  Show All
+</button>
+</Link>
+</div>
+
     </div>
   );
 };
