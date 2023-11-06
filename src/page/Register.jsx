@@ -25,8 +25,10 @@ const Register = () => {
         console.log(user);
 
         createUser(email, password)
+        // eslint-disable-next-line no-unused-vars
         .then(res => {
             userUpdateProfile(name, photo)
+            // eslint-disable-next-line no-unused-vars
             .then(res => {
                 toast.success('User created successfully');
                 navigate('/login');
