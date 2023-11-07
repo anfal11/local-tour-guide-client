@@ -1,20 +1,48 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Header from "./Header";
-import { useContext} from "react";
+import { useContext, useEffect, useState} from "react";
 import { AuthContext } from "../context/AuthProvider";
-
+import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const SIngleService = () => {
-  const laoder = useLoaderData();
+
+  const [services, setServices] = useState([]);
+  const loader = useLoaderData();
   const { user } = useContext(AuthContext);
   const {
     serviceDescription,
     serviceImage,
     serviceName,
     servicePrice,
+    serviceArea,
     serviceProvider,
-  } = laoder;
+  } = loader;
 
+  useEffect(() => {
+    // Fetch the services data here
+    try {
+      fetch("http://localhost:5000/api/v1/services")
+        .then((res) => res.json())
+        .then((data) => {
+          setServices(data);
+        });
+    } catch (error) {
+      toast.error(error);
+    }
+  }, []);
+
+ 
+
+
+  const providerEmail = serviceProvider.email;
+  const otherServices = services.filter(
+    (service) =>
+      service.serviceProvider.email === providerEmail && service._id !== loader._id
+  );
+  
+ 
+console.log(otherServices);
 
   return (
     <div className="mb-10">
@@ -38,11 +66,11 @@ const SIngleService = () => {
             </h1>
             <h1 className="text-xl text-gray-500 font-medium">
               <span className="text-[#4D96B3] font-bold">Provider Location: </span>
-              {serviceProvider.name}
+              {serviceArea}
             </h1>
-            <h1 className="text-xl text-gray-500 font-medium">
+            <h1 className="text-xl text-gray-500 font-medium text-center px-40">
               <span className="text-[#4D96B3] font-bold">About Provider: </span>
-              {serviceProvider.name}
+              {serviceProvider.aboutProvider}
             </h1>
           </div>
         </div>
@@ -141,6 +169,88 @@ const SIngleService = () => {
                 </div>
           </div>
         </div>
+      </section>
+
+      {/* other cards section of that user if available */}
+
+      <section className="max-w-7xl mx-auto">
+          <div>
+          <h1 className="text-gray-500 font-bold text-2xl text-center underline py-10">
+            Other Services of this Provider:{" "}
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
+            
+            
+              <div  className="max-w-7xl mx-auto mt-32 mb-32">
+
+{
+  otherServices.length > 0 ? (
+    <div>
+  { otherServices.map((se) => (
+    <motion.button
+      key={se._id}
+      whileHover={{ scale: 0.9 }}
+      // whileTap={{ scale: 0.9 }}
+      // onClick={() => null}
+    >
+      <div className="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl">
+        <div className="">
+          <img
+            className="object-cover h-80 w-full"
+            src={se.serviceImage}
+            alt="Image Description"
+          />
+        </div>
+        <div className="p-4 md:p-6">
+          <h3 className="text-2xl text-start font-semibold text-gray-500">
+            {se.serviceName}
+          </h3>
+          <p className="mt-3 text-start text-gray-500 text-lg">
+            {se.serviceDescription}
+          </p>
+          <span className="block text-start mb-1 text-base font-semibold uppercase text-[#4D96B3]">
+            Price: {se.servicePrice}
+          </span>
+          <h3 className="mb-3 text-start text-gray-500">
+            <span className="font-semibold">Service Provider Name:</span>{" "}
+            {se.serviceProvider.name}
+          </h3>
+
+          <div className="flex">
+            <img
+              className="inline-block h-[2.875rem] w-[2.875rem] rounded-full"
+              src={se.serviceProvider.image}
+            />
+          </div>
+        </div>
+        <div className="mt-auto flex border-t border-gray-200 divide-x divide-gray-200">
+        <Link
+            to={`/services/${se.serviceName}`}
+            className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-es-xl bg-[#4D96B3] text-white shadow-sm disabled:opacity-50 hover:bg-[#1e6a88] hover:text-white"
+          >
+            View Details
+          </Link>
+        </div>
+      </div>
+    </motion.button>
+  ))}
+</div>
+  ) :
+  (
+    <div className="flex flex-col justify-center items-center">
+    <div className="text-2xl mb-2 text-gray-500 font-bold"> No other services Found here</div>
+    <img className="w-96 rounded-full" src="https://i.ibb.co/yVZJPrB/photo-1593341832681-6cb2ce1ed053-q-80-w-1968-auto-format-fit-crop-ixlib-rb-4-0.jpg" alt="" />
+    </div>
+  )
+}
+
+
+
+</div>
+              
+            
+          </div>
+          </div>
       </section>
     </div>
   );

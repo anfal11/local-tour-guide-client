@@ -21,7 +21,7 @@ const PopularServices = () => {
     }
   }, []);
 
-  console.log(services);
+
 
   return (
     <div className="max-w-7xl mx-auto mt-32 mb-32">
