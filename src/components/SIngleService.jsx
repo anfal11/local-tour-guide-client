@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import Header from "./Header";
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { AuthContext } from "../context/AuthProvider";
 
 
@@ -8,7 +8,6 @@ const SIngleService = () => {
   const laoder = useLoaderData();
   const { user } = useContext(AuthContext);
   const {
-    _id,
     serviceDescription,
     serviceImage,
     serviceName,
@@ -58,7 +57,7 @@ const SIngleService = () => {
 
           <div>
                 <div className="flex flex-col lg:flex-row justify-evenly px-10 gap-4">
-                    <img className="lg:w-1/2" src={serviceImage} alt="" />
+                    <img className="lg:w-1/2 h-[446px]" src={serviceImage} alt="" />
                   <div className="space-y-3">
                   <h1 className="text-xl text-gray-500 font-medium">
               <span className="text-[#4D96B3] font-bold">Service Name: </span>
@@ -99,20 +98,34 @@ const SIngleService = () => {
           <h3 className="mb-2 text-2xl font-bold text-gray-400">
             {serviceName} 🎉
           </h3>
-          <p className="text-gray-500">
-          <span className="font-bold">Provider Email: </span>{serviceProvider?.email} 
+          <p className="text-gray-500 flex justify-center gap-4 items-center">
+          <span className="font-bold">Provider Email: </span>
+          <input 
+            type="email"
+            value={serviceProvider?.email}
+            readOnly
+            className="my-1 py-3 px-4 block w-[70%] border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"/>  
           </p>
-          <p className="text-gray-500">
-            <span className="font-bold">User Email:</span> {user?.email}
+          <p className="text-gray-500 flex justify-center gap-4 items-center">
+            <span className="font-bold">User Email:</span>
+            <input 
+            type="email"
+            value={user?.email}
+            readOnly
+            className="my-1 py-3 px-4 block w-[77%] border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"/> 
           </p>
           <p className="text-gray-500">
           <span className="font-bold">Service Taking Date: </span><input type="date" className="my-1 py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" placeholder="This is placeholder"/>
           </p>
-          <p className="text-gray-500">
+          <p className="text-gray-500 ">
           <span className="font-bold">Special instruction: </span><input type="text" className="my-1 py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" placeholder="Your instruction"/>
           </p>
-          <p className="text-gray-500 font-bold">
-          Price: {servicePrice}
+          <p className="flex justify-center gap-4 items-center text-gray-500 font-bold">
+          Price:<input 
+            type="text"
+            value= {servicePrice}
+            readOnly
+            className="my-1 py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"/>
           </p>
 
           <div className="mt-6 flex justify-center gap-x-4">
