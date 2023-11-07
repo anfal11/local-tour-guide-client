@@ -29,7 +29,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "services/:serviceName",
-        element: <SIngleService />,
+        element: <PrivateRoute><SIngleService /></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/api/v1/services/${params.serviceName}`)
       },
       {

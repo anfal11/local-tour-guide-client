@@ -30,7 +30,7 @@ const PopularServices = () => {
         Popular Services{" "}
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
-        {services.map((service) => (
+        {services.slice(0, 4).map((service) => (
           <motion.button
             key={service._id}
             whileHover={{ scale: 0.9 }}
@@ -83,7 +83,8 @@ const PopularServices = () => {
 
 <div className="flex justify-center mt-10">
 <Link to='/allService'>
-<button className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#4D96B3] text-white hover:bg-green-600 ">
+<button className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#4D96B3] text-white hover:bg-green-600"
+>
   Show All
 </button>
 </Link>
