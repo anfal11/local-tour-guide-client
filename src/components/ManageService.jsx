@@ -72,11 +72,13 @@ const ManageService = () => {
 
       {/* users all services that they added */}
       <section>
-        <h1 className="text-2xl text-gray-500 text-center mb-14 mt-10">
+        <h1 className="underline text-2xl text-gray-500 text-center mb-14 mt-10">
           Your Services
         </h1>
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
+          {
+            serviceFilter.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
             {serviceFilter.map((service) => (
               <motion.button
                 key={service._id}
@@ -136,6 +138,17 @@ const ManageService = () => {
               </motion.button>
             ))}
           </div>
+            )
+            :
+            (
+              <div className="max-w-7xl mx-auto col-span-3">
+                <h1 className="text-2xl text-gray-500 text-center mb-14 mt-10">
+                  You have not added any service yet.
+                </h1>
+                <img className="mx-auto" src="https://i.ibb.co/4NCks3s/icon-not-found.png" alt="" />
+              </div>
+            )
+          }
         </div>
       </section>
     </div>

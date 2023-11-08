@@ -63,7 +63,7 @@ const SIngleService = () => {
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
-                if(data.insertedId > 0){
+                if(data.insertedId){
                   toast.success('Service booked successfully');
                 }
             })
