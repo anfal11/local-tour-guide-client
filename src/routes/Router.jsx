@@ -70,13 +70,13 @@ const Router = createBrowserRouter([
         ),
       },
       {
-        path: '/update-services/:id',
+        path: '/update-services/:serviceName',
         element: (
           <PrivateRoute>
             <UpdateService />
           </PrivateRoute>
         ),
-        loader: ({params}) => fetch(`http://localhost:5000/api/v1/update-services/${params.id}`),
+        loader: ({params}) => fetch(`http://localhost:5000/api/v1/update-services/${params.serviceName}`),
       },
      
     ],
