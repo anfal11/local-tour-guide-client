@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const AllService = () => {
     const [services, setServices] = useState([]);
@@ -27,6 +28,10 @@ const AllService = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>TourEase | All Services</title>
+  
+      </Helmet>
       <Header />
        {/* search */}
       <div className="relative overflow-hidden">

@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const SIngleService = () => {
   const [services, setServices] = useState([]);
@@ -81,6 +82,10 @@ const SIngleService = () => {
 
   return (
     <div className="mb-10">
+          <Helmet>
+        <title>TourEase | Service Details</title>
+  
+      </Helmet>
       <Header />
 
       {/* service provider information */}

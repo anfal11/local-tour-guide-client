@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import Header from "./Header";
 import { AuthContext } from "../context/AuthProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 
 const addServices = () => {
@@ -64,6 +65,10 @@ const addServices = () => {
    
   return (
     <div>
+       <Helmet>
+        <title>TourEase | Add Services</title>
+  
+      </Helmet>
       <Header />
       {/* add form section  */}
       <section className="mt-36">

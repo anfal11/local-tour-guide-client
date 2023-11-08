@@ -1,6 +1,7 @@
 
 import { useLoaderData, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const UpdateService = () => {
 
@@ -65,6 +66,10 @@ const UpdateService = () => {
     }
     return (
         <div className="py-14 bg-gradient-to-tl from-[#4D96B3]">
+           <Helmet>
+        <title>TourEase | Update Service</title>
+  
+      </Helmet>
             <h1 className="text-2xl text-gray-500 text-center underline font-bold">Update Your Services</h1>
             
 

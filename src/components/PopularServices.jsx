@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 const PopularServices = () => {
@@ -25,6 +26,10 @@ const PopularServices = () => {
 
   return (
     <div className="max-w-7xl mx-auto mt-32 mb-32">
+       <Helmet>
+        <title>TourEase | PopularServices</title>
+  
+      </Helmet>
       <h1 className="text-center text-gray-400 underline font-extrabold text-3xl mb-10">
         {" "}
         Popular Services{" "}

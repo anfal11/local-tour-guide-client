@@ -5,6 +5,7 @@ import { AuthContext } from "../context/AuthProvider";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const ManageService = () => {
   const { user } = useContext(AuthContext);
@@ -68,6 +69,10 @@ const ManageService = () => {
 
   return (
     <div className="mb-28">
+       <Helmet>
+        <title>TourEase | ManageServices</title>
+  
+      </Helmet>
       <Header />
 
       {/* users all services that they added */}

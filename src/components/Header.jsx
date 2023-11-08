@@ -34,6 +34,7 @@ const Header = () => {
         >
           <div className="flex items-center justify-between">
             <NavLink
+            to='/'
               className="flex-none text-xl font-semibold "
               aria-label="TourNest"
             >

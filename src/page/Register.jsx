@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
 
@@ -45,6 +46,10 @@ const Register = () => {
     }
   return (
     <div className="max-w-2xl mx-auto mt-40">
+       <Helmet>
+        <title>TourEase | Register</title>
+  
+      </Helmet>
       <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm">
         <div className="p-4 sm:p-7">
           <div className="text-center">

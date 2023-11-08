@@ -6,11 +6,15 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Testimonial from "../components/Testimonial";
 import PopularServices from "../components/PopularServices";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
  const { scrollYProgress } = useScroll();
   return (
     <>
+          <Helmet>
+        <title>TourEase | Home</title> {/* Set the title for the Home component */}
+      </Helmet>
     <motion.div
     style={{
       scaleX: scrollYProgress,

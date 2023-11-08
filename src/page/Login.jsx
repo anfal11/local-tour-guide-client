@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
 
@@ -43,6 +44,10 @@ const Login = () => {
     }
   return (
     <>
+       <Helmet>
+        <title>TourEase | Login</title>
+  
+      </Helmet>
       <motion.div
         className="box"
         initial={{ opacity: 0, scale: 0.5 }}
