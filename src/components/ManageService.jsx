@@ -15,8 +15,8 @@ const ManageService = () => {
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);
-  console.log(service);
-  console.log(user);
+//   console.log(service);
+//   console.log(user);
 
   const serviceFilter = service.filter(
     (service) => service.serviceProvider.email === user.email
@@ -40,7 +40,7 @@ const ManageService = () => {
         })
             .then((res) => res.json())
             .then((result) => {
-                console.log("Success:", result);
+                // console.log("Success:", result);
                 if (result.deletedCount > 0) {
                 Swal.fire(
                     "Deleted!",

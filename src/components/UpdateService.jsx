@@ -10,7 +10,7 @@ const UpdateService = () => {
         
 
     const { serviceImage, serviceName, serviceDescription, servicePrice, serviceProvider} = service; 
-    console.log(service);
+    // console.log(service);
 
     // useEffect(() => {
     //     setUserProfile({
@@ -52,7 +52,7 @@ const UpdateService = () => {
       })
         .then((res) => res.json())
         .then((result) => {
-          console.log('Success:', result);
+        //   console.log('Success:', result);
           if (result.modifiedCount > 0){
             toast.success('Service Updated Successfully');
             navigate(-1)

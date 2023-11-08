@@ -22,7 +22,7 @@ const Register = () => {
             email,
             password,
         }
-        console.log(user);
+        // console.log(user);
 
         createUser(email, password)
         // eslint-disable-next-line no-unused-vars

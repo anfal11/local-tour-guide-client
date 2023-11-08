@@ -6,12 +6,12 @@ import Login from "../page/Login";
 import Register from "../page/Register";
 import ErrorPage from "../page/ErrorPage";
 import AddServices from "../components/AddServices";
-import MySchedule from "../components/MySchedule";
 import PrivateRoute from "./PrivateRoute";
 import AllService from "../page/AllService";
 import ManageService from "../components/ManageService";
 import SIngleService from "../components/SIngleService";
 import UpdateService from "../components/UpdateService";
+import MySchedules from "../components/MySchedules";
 
 const Router = createBrowserRouter([
   {
@@ -65,9 +65,11 @@ const Router = createBrowserRouter([
         path: "/MySchedule",
         element: (
           <PrivateRoute>
-            <MySchedule />
+         <MySchedules />
           </PrivateRoute>
         ),
+        loader: () =>
+          fetch("http://localhost:5000/api/v1/create-bookings")
       },
       {
         path: '/update-services/:serviceName',

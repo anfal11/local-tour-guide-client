@@ -50,9 +50,10 @@ const SIngleService = () => {
       instruction,
       servicePrice,
     };
+   
 
 
-    fetch('http://localhost:5000/api/v1/user/create-bookings',{
+    fetch('http://localhost:5000/api/v1/create-bookings',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -61,8 +62,10 @@ const SIngleService = () => {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                toast.success('Service booked successfully');
+                // console.log(data);
+                if(data.insertedId > 0){
+                  toast.success('Service booked successfully');
+                }
             })
 
   };
@@ -259,10 +262,9 @@ const SIngleService = () => {
 
                             <div className="mt-6 flex justify-center gap-x-4">
                               <button
-                                type="button"
+                                type="submit"
                                 className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-slate-700  text-white hover:bg-slate-900 "
                                 data-hs-overlay="#hs-subscription-with-image"
-                                onClick={handlePurchase}
                               >
                                 Purchase this service
                               </button>

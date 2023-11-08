@@ -21,7 +21,7 @@ const Login = () => {
             password,
         }
 
-        console.log(user);
+        // console.log(user);
         try {
             await signIn(email, password);
             toast.success("User Login successfully");
