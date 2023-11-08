@@ -11,7 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import AllService from "../page/AllService";
 import ManageService from "../components/ManageService";
 import SIngleService from "../components/SIngleService";
-
+import UpdateService from "../components/UpdateService";
 
 const Router = createBrowserRouter([
   {
@@ -29,8 +29,13 @@ const Router = createBrowserRouter([
       },
       {
         path: "services/:serviceName",
-        element: <PrivateRoute><SIngleService /></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/api/v1/services/${params.serviceName}`)
+        element: (
+          <PrivateRoute>
+            <SIngleService />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/services/${params.serviceName}`),
       },
       {
         path: "/dashboard",
@@ -40,18 +45,40 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-   {
-    path: '/manageService',
-    element: <PrivateRoute><ManageService /></PrivateRoute>,
-   },
-   {
-    path: '/addServices',
-    element: <PrivateRoute><AddServices /></PrivateRoute>,
-   },
-   {
-    path: '/MySchedule',
-    element: <PrivateRoute><MySchedule /></PrivateRoute>,
-   }
+      {
+        path: "/manageService",
+        element: (
+          <PrivateRoute>
+            <ManageService />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/addServices",
+        element: (
+          <PrivateRoute>
+            <AddServices />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/MySchedule",
+        element: (
+          <PrivateRoute>
+            <MySchedule />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/update-services/:id',
+        element: (
+          <PrivateRoute>
+            <UpdateService />
+          </PrivateRoute>
+        ),
+        loader: ({params}) => fetch(`http://localhost:5000/api/v1/update-services/${params.id}`),
+      },
+     
     ],
   },
   {

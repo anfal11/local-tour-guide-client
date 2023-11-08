@@ -48,7 +48,9 @@ const addServices = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                toast.success('Your Service added successfully')
+                if (data.insertedId) {
+                    toast.success('Service added successfully');
+                }
             })
         }
        
@@ -402,7 +404,7 @@ const addServices = () => {
                             type="submit"
                             className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#4D96B3] text-white disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                           >
-                            Add button
+                            Add services
                           </button>
                         </div>
                       </div>
