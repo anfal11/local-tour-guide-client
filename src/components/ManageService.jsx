@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ManageService = () => {
   const { user } = useContext(AuthContext);
@@ -22,8 +23,45 @@ const ManageService = () => {
   );
   
     const handleDelete = (serviceName) => {
-        
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        })
+        .then((result) =>{
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/api/v1/services/${serviceName}`, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                console.log("Success:", result);
+                if (result.deletedCount > 0) {
+                Swal.fire(
+                    "Deleted!",
+                    "Your file has been deleted.",
+                    "success"
+                );
+                const remainingService = service.filter(
+                    (service) => service.serviceName !== serviceName
+
+                );
+                setService(remainingService);
+                
+            }
+        } )
+ 
+     
     }
+
+});
+};
+
 
 
 

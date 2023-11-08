@@ -114,6 +114,7 @@ const addServices = () => {
                             <div className="relative">
                               <input
                                 type="text"
+                                required
                                 id="hs-hero-signup-form-floating-input-last-name"
                                 className="peer p-4 block w-full rounded-lg text-sm placeholder:text-transparent focus:border-blue-500  disabled:opacity-50 disabled:pointer-events-none border border-gray-700 text-gray-400 focus:ring-gray-600
                       focus:pt-6
