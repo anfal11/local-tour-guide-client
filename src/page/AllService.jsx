@@ -12,7 +12,7 @@ const AllService = () => {
 
     useEffect(() => {
       try {
-        fetch("https://local-tour-guides-server.vercel.app/api/v1/services")
+        fetch(`https://local-tour-guides-server.vercel.app/api/v1/services?search=${searchTerm}`)
           .then((res) => res.json())
           .then((data) => {
             setServices(data);
@@ -20,11 +20,18 @@ const AllService = () => {
       } catch (error) {
         toast.error(error);
       }
-    }, []);
+    }, [searchTerm]);
   
     const filteredServices = services.filter((service) => {
         return service.serviceName.toLowerCase().includes(searchTerm.toLowerCase());
       });
+
+      const handleSearch = (e) => {
+        e.preventDefault();
+        const searchText = e.target.search.value;
+        console.log(searchText);
+        setSearchTerm(searchText);
+      }
 
   return (
     <div>
@@ -46,15 +53,15 @@ const AllService = () => {
             </p>
 
             <div className="mt-7 sm:mt-12 mx-auto max-w-xl relative">
-              <form>
+              <form onSubmit={handleSearch}>
                 <div className="relative z-10 flex space-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-slate-900 dark:border-gray-700 dark:shadow-gray-900/[.2]">
                   <div className="flex-[1_0_0%]">
                     <label className="block text-sm text-gray-700 font-medium dark:text-white">
                       <span className="sr-only">Search article</span>
                     </label>
                     <input
-                      type="email"
-                      name="hs-search-article-1"
+                      type="text"
+                      name="search"
                       id="hs-search-article-1"
                       className="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600"
                       placeholder="Search by service name"
@@ -62,7 +69,7 @@ const AllService = () => {
                      onChange={(e) => setSearchTerm(e.target.value)}
                     />
                   </div>
-                  <div className="flex-[0_0_auto]">
+                  {/* <div className="flex-[0_0_auto]">
                     <a
                       className="w-[46px] h-[46px] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-[#4D96B3] text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                       href="#"
@@ -77,7 +84,11 @@ const AllService = () => {
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                       </svg>
                     </a>
-                  </div>
+                  </div> */}
+                  <input type="submit" className="text-white text-xl border rounded-md p-2" value="search" 
+
+                    
+                  />
                 </div>
               </form>
 
