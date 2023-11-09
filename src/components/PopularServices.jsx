@@ -12,7 +12,7 @@ const PopularServices = () => {
 
   useEffect(() => {
     try {
-      fetch("https://local-tour-guides-server.vercel.app/api/v1/services")
+      fetch("https://local-tour-guides-server.vercel.app/api/v1/services?search=")
         .then((res) => res.json())
         .then((data) => {
           setServices(data);
