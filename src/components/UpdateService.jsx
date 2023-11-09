@@ -44,7 +44,7 @@ const UpdateService = () => {
         image
       }
 
-      fetch(`http://localhost:5000/api/v1/services/${service.serviceName}`, {
+      fetch(`https://local-tour-guides-server.vercel.app/api/v1/services/${service.serviceName}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

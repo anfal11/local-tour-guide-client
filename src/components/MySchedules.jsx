@@ -9,9 +9,9 @@ const MySchedules = () => {
   const loader = useLoaderData();
   const [service, setService] = useState([]);
   const [myBookService, setMyBookeService] = useState([]);
-  const [statusMap, setStatusMap] = useState({}); 
+  const [statusMap, setStatusMap] = useState('pending'); 
 
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const userEmail = user?.email;
 
   useEffect(() => {
@@ -277,7 +277,7 @@ const MySchedules = () => {
                               {bookedService.servicePrice}
                             </td>
                             <td className="flex justify-center px-6 py-4 whitespace-nowrap text-end text-base font-medium">
-                              <select  value={statusMap[bookedService._id] || "Pending"}  onChange={(e) => handleStatusChange(bookedService._id, e.target.value)}>
+                              <select  value={statusMap[bookedService._id]}  onChange={(e) => handleStatusChange(bookedService._id, e.target.value)}>
                                 <option value="Pending">Pending</option>
                                 <option value="In Progress">In Progress</option>
                                 <option value="Completed">Completed</option>

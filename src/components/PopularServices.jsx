@@ -12,7 +12,7 @@ const PopularServices = () => {
 
   useEffect(() => {
     try {
-      fetch("http://localhost:5000/api/v1/services")
+      fetch("https://local-tour-guides-server.vercel.app/api/v1/services")
         .then((res) => res.json())
         .then((data) => {
           setServices(data);
@@ -26,10 +26,7 @@ const PopularServices = () => {
 
   return (
     <div className="max-w-7xl mx-auto mt-32 mb-32">
-       <Helmet>
-        <title>TourEase | PopularServices</title>
-  
-      </Helmet>
+
       <h1 className="text-center text-gray-400 underline font-extrabold text-3xl mb-10">
         {" "}
         Popular Services{" "}

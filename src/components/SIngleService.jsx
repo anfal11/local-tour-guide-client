@@ -22,7 +22,7 @@ const SIngleService = () => {
   useEffect(() => {
     // Fetch the services data here
     try {
-      fetch("http://localhost:5000/api/v1/services")
+      fetch("https://local-tour-guides-server.vercel.app/api/v1/services")
         .then((res) => res.json())
         .then((data) => {
           setServices(data);
@@ -54,7 +54,7 @@ const SIngleService = () => {
    
 
 
-    fetch('http://localhost:5000/api/v1/create-bookings',{
+    fetch('https://local-tour-guides-server.vercel.app/api/v1/create-bookings',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -96,7 +96,7 @@ const SIngleService = () => {
           </h1>
           <div className="flex flex-col items-center">
             <img
-              className="w-96 rounded-full"
+              className="w-36 rounded-full"
               src={serviceProvider.image}
               alt=""
             />

@@ -12,7 +12,7 @@ const ManageService = () => {
   const [service, setService] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/services")
+    fetch("https://local-tour-guides-server.vercel.app/api/v1/services")
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);
@@ -36,7 +36,7 @@ const ManageService = () => {
         })
         .then((result) =>{
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/api/v1/services/${serviceName}`, {
+                fetch(`https://local-tour-guides-server.vercel.app/api/v1/services/${serviceName}`, {
             method: "DELETE",
         })
             .then((res) => res.json())

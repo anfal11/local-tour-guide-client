@@ -6,6 +6,7 @@ import Router from './routes/Router'
 import AuthProvider from './context/AuthProvider'
 import { Toaster } from 'react-hot-toast'
 import { Helmet } from 'react-helmet'
+import('preline')
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
