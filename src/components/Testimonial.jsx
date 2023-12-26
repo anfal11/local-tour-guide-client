@@ -1,9 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthProvider";
-
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+// import required modules
+import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 const Testimonial = () => {
   const [testimonials, setTestimonials] = useState([]);
-  const {user} = useContext(AuthContext);
   const fetchData = async () => {
     try {
       const response = await fetch("http://localhost:5000/api/v1/review");
@@ -33,36 +36,65 @@ const Testimonial = () => {
             Loved by business and individuals across the globe
           </h2>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {testimonials.map((testimonial, index) => (
-              <div key={index} className="flex h-auto">
-                <div className="flex flex-col rounded-xl w-96 bg-[#4D96B3]">
-                  <div className="flex-auto p-4 md:p-6">
-                    <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
-                      &quot;{testimonial?.message}&quot;
-                    </p>
-                  </div>
-                  <div className="p-4 bg-gray-100 rounded-b-xl md:px-7 dark:bg-slate-700">
-                    <div className="flex items-center">
-                      <div className="flex-shrink-0">
-                        <img
-                          className="h-8 w-8 rounded-full sm:h-[2.875rem] sm:w-[2.875rem]"
-                          src={testimonial?.photoURL}
-                          alt="Image Description"
-                        />
-                      </div>
-                      <div className="grow ml-3">
-                        <p className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
-                          {testimonial?.name}
-                        </p>
+                 {/* Swiper Container */}
+                 <Swiper
+            cssMode={true}
+            breakpoints={{
+              640: {
+                slidesPerView: 1, // 1 slide for small screens (mobile)
+                spaceBetween: 16
+              },
+              768: {
+                slidesPerView: 2, // 3 slides for larger screens
+                spaceBetween: 24,
+              },
+              1024: {
+                slidesPerView: 3, // 3 slides for larger screens
+                spaceBetween: 32,
+              },
+              1208: {
+                slidesPerView: 3, // 3 slides for larger screens
+                spaceBetween: 32,
+              },
+            }}
+            navigation={true}
+            pagination={true}
+            mousewheel={true}
+            keyboard={true}
+            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+            className="mySwiper"
+          >
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Swiper Slides */}
+              {testimonials.map((testimonial, index) => (
+                <SwiperSlide key={index} className="flex h-auto">
+                  <div className="mb-20 flex flex-col rounded-xl h-60 w-96 md:w-80 xl:w-96 bg-[#4D96B3]">
+                    <div className="flex-auto p-4 md:p-6">
+                      <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
+                        &quot;{testimonial?.message}&quot;
+                      </p>
+                    </div>
+                    <div className="p-4 bg-gray-100 rounded-b-xl md:px-7 dark:bg-slate-700">
+                      <div className="flex items-center">
+                        <div className="flex-shrink-0">
+                          <img
+                            className="h-8 w-8 rounded-full sm:h-[2.875rem] sm:w-[2.875rem]"
+                            src={testimonial?.photoURL}
+                            alt="Image Description"
+                          />
+                        </div>
+                        <div className="grow ml-3">
+                          <p className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
+                            {testimonial?.name}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
-
-        </div>
+                </SwiperSlide>
+              ))}
+            </div>
+          </Swiper>
         <div className="mt-20 grid gap-6 grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-8">
           <div>
             <h4 className="text-lg sm:text-xl font-semibold text-gray-400">Accuracy rate</h4>
