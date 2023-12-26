@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import Testimonial from "../components/Testimonial";
 import PopularServices from "../components/PopularServices";
 import { Helmet } from "react-helmet";
+import Review from "../components/Review";
 
 const Home = () => {
  const { scrollYProgress } = useScroll();
@@ -35,6 +36,7 @@ const Home = () => {
       <PopularServices />
       <Benefits />
       <Testimonial />
+      <Review />
       <Contact />
     </div>
     <Footer></Footer>
