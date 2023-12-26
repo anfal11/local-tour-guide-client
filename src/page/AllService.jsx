@@ -12,7 +12,7 @@ const AllService = () => {
 
     useEffect(() => {
       try {
-        fetch(`https://local-tour-guides-server.vercel.app/api/v1/services?search=${searchTerm}`)
+        fetch(`http://localhost:5000/api/v1/services?search=${searchTerm}`)
           .then((res) => res.json())
           .then((data) => {
             setServices(data);
@@ -32,6 +32,16 @@ const AllService = () => {
         console.log(searchText);
         setSearchTerm(searchText);
       }
+
+      const handleCardClick = async (serviceId) => {
+        try {
+          await fetch(`http://localhost:5000/api/v1/services/increment-views/${serviceId}`, {
+            method: 'PUT',
+          });
+        } catch (error) {
+          console.error('Error incrementing views:', error);
+        }
+      };
 
   return (
     <div>
@@ -149,11 +159,13 @@ const AllService = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
         {filteredServices.map((service) => (
-          <motion.button
+          <button
+          className="transform transition duration-500 hover:scale-90"
             key={service._id}
-            whileHover={{ scale: 0.9 }}
+            // whileHover={{ scale: 0.9 }}
             // whileTap={{ scale: 0.9 }}
             // onClick={() => null}
+            onClick={() => handleCardClick(service._id)}
           >
             <div className="group flex flex-col h-full bg-white border border-gray-200 shadow-sm rounded-xl">
               <div className="">
@@ -194,7 +206,7 @@ const AllService = () => {
                 </Link>
               </div>
             </div>
-          </motion.button>
+          </button>
         ))}
       </div>
 

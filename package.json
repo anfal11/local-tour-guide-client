@@ -12,7 +12,7 @@
   "dependencies": {
     "@preline/dropdown": "^2.0.0",
     "firebase": "^10.5.2",
-    "framer-motion": "^10.16.4",
+    "framer-motion": "^10.16.16",
     "leaflet": "^1.9.4",
     "preline": "^1.9.0",
     "prop-types": "^15.8.1",

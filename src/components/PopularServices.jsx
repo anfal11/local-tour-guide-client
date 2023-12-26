@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
+
 
 
 const PopularServices = () => {
@@ -12,10 +12,11 @@ const PopularServices = () => {
 
   useEffect(() => {
     try {
-      fetch("https://local-tour-guides-server.vercel.app/api/v1/services?search=")
+      fetch("http://localhost:5000/api/v1/services?search=")
         .then((res) => res.json())
         .then((data) => {
-          setServices(data);
+          const sortedServices = data.sort((a, b) => b.views - a.views);
+          setServices(sortedServices);
         });
     } catch (error) {
       toast.error(error);
@@ -33,9 +34,10 @@ const PopularServices = () => {
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
         {services.slice(0, 4).map((service) => (
-          <motion.button
+          <button
             key={service._id}
-            whileHover={{ scale: 0.9 }}
+            className="transform transition duration-500 hover:scale-90"
+            // whileHover={{ scale: 0.9 }}
             // whileTap={{ scale: 0.9 }}
             // onClick={() => null}
           >
@@ -78,7 +80,7 @@ const PopularServices = () => {
                 </Link>
               </div>
             </div>
-          </motion.button>
+          </button>
         ))}
       </div>
 
