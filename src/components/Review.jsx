@@ -12,7 +12,8 @@ const Review = () => {
     const email = form.get('email');
     const message = form.get('message');
 
-    const review = { name, email, message };
+    const review = { name, email, message, photoURL: user?.photoURL };
+
     
     fetch('http://localhost:5000/api/v1/review', {
       method: 'POST',

@@ -1,4 +1,27 @@
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/AuthProvider";
+
 const Testimonial = () => {
+  const [testimonials, setTestimonials] = useState([]);
+  const {user} = useContext(AuthContext);
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/v1/review");
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+
+      const data = await response.json();
+      setTestimonials(data);
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
     return (
         <div className="mt-32 mb-32">
         <h1 className="text-4xl font-extrabold text-center text-gray-400 mt-10 underline"> Testimonial </h1>
@@ -11,78 +34,34 @@ const Testimonial = () => {
           </h2>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="flex h-auto">
-            <div className="flex flex-col rounded-xl bg-[#4D96B3]">
-              <div className="flex-auto p-4 md:p-6">
-                <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
-                &quot;With TravelEase, I&apos;am able to easily move one place to another in my holiday. It&apos;s become an essential website for us to grow and engage with people.&quot;
-                </p>
-              </div>
-              <div className="p-4 bg-gray-100 rounded-b-xl md:px-7 dark:bg-slate-700">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <img className="h-8 w-8 rounded-full sm:h-[2.875rem] sm:w-[2.875rem]" src="https://i.ibb.co/fQ22XH0/393852305-320151283965050-1926431818762647036-n.jpg" alt="Image Description" />
-                  </div>
-                  <div className="grow ml-3">
-                    <p className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
-                        Hasin Shadab Pritom
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
-                      Product Manager | Dhaka
+        {testimonials.map((testimonial, index) => (
+              <div key={index} className="flex h-auto">
+                <div className="flex flex-col rounded-xl w-96 bg-[#4D96B3]">
+                  <div className="flex-auto p-4 md:p-6">
+                    <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
+                      &quot;{testimonial?.message}&quot;
                     </p>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex h-auto">
-            <div className="flex flex-col rounded-xl bg-[#4D96B3]">
-              <div className="flex-auto p-4 md:p-6">
-                <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
-                &quot;In September, I will be using this website for 2 years. I went through multiple updates and changes and I&apos;m very glad to see the consistency and effort made by the team.&quot;
-                </p>
-              </div>
-              <div className="p-4 bg-gray-100 rounded-b-xl md:px-7 dark:bg-slate-700">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <img className="h-8 w-8 rounded-full sm:h-[2.875rem] sm:w-[2.875rem]" src="https://i.ibb.co/dcWYLhx/331078234-591675072441704-734363908550208459-n.jpg" alt="Image Description" />
-                  </div>
-                  <div className="grow ml-3">
-                    <p className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
-                      Md. Shams Uddin
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
-                      Senior Director of Operations | Ollyo
-                    </p>
+                  <div className="p-4 bg-gray-100 rounded-b-xl md:px-7 dark:bg-slate-700">
+                    <div className="flex items-center">
+                      <div className="flex-shrink-0">
+                        <img
+                          className="h-8 w-8 rounded-full sm:h-[2.875rem] sm:w-[2.875rem]"
+                          src={testimonial?.photoURL}
+                          alt="Image Description"
+                        />
+                      </div>
+                      <div className="grow ml-3">
+                        <p className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
+                          {testimonial?.name}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="flex h-auto">
-            <div className="flex flex-col bg-[#4D96B3] rounded-xl">
-              <div className="flex-auto p-4 md:p-6">
-                <p className="text-base italic md:text-lg text-gray-800 dark:text-gray-200">
-                &quot;Refreshing and Thought provoking services and it changes my view about how I travel. Great typography, modern clean technologirs, nice tones of the system.&quot;
-                </p>
-              </div>
-              <div className="p-4 bg-gray-100 rounded-b-xl md:px-7 dark:bg-slate-700">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <img className="h-8 w-8 rounded-full sm:h-[2.875rem] sm:w-[2.875rem]" src="https://i.ibb.co/R6tDfgX/383169899-2289814151408256-5210772395778022398-n-1.jpg" alt="Image Description" />
-                  </div>
-                  <div className="grow ml-3">
-                    <p className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">
-                      Md. Shanto Hosen
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
-                      Entrepreneur | Happy customer
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            ))}
+
         </div>
         <div className="mt-20 grid gap-6 grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-8">
           <div>
