@@ -6,42 +6,51 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 
 const AllService = () => {
-    const [services, setServices] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
+  const [services, setServices] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
 
+  useEffect(() => {
+    try {
+      fetch(`http://localhost:5000/api/v1/services?search=${searchTerm}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setServices(data);
+        });
+    } catch (error) {
+      toast.error(error);
+    }
+  }, [searchTerm]);
 
-    useEffect(() => {
-      try {
-        fetch(`http://localhost:5000/api/v1/services?search=${searchTerm}`)
-          .then((res) => res.json())
-          .then((data) => {
-            setServices(data);
-          });
-      } catch (error) {
-        toast.error(error);
-      }
-    }, [searchTerm]);
-  
-    const filteredServices = services.filter((service) => {
-        return service.serviceName.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredServices = services.filter((service) => {
+    return service.serviceName.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  const indexOfLastService = currentPage * itemsPerPage;
+  const indexOfFirstService = indexOfLastService - itemsPerPage;
+  const currentServices = filteredServices.slice(indexOfFirstService, indexOfLastService);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchText = e.target.search.value;
+    setSearchTerm(searchText);
+  }
+
+  const handleCardClick = async (serviceId) => {
+    try {
+      await fetch(`http://localhost:5000/api/v1/services/increment-views/${serviceId}`, {
+        method: 'PUT',
       });
+    } catch (error) {
+      console.error('Error incrementing views:', error);
+    }
+  };
 
-      const handleSearch = (e) => {
-        e.preventDefault();
-        const searchText = e.target.search.value;
-        console.log(searchText);
-        setSearchTerm(searchText);
-      }
-
-      const handleCardClick = async (serviceId) => {
-        try {
-          await fetch(`http://localhost:5000/api/v1/services/increment-views/${serviceId}`, {
-            method: 'PUT',
-          });
-        } catch (error) {
-          console.error('Error incrementing views:', error);
-        }
-      };
+  const truncateDescription = (description, wordCount) => {
+    const words = description.split(' ');
+    return words.slice(0, wordCount).join(' ');
+  };
 
   return (
     <div>
@@ -158,7 +167,7 @@ const AllService = () => {
         <div className="max-w-7xl mx-auto mt-32 mb-32">
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
-        {filteredServices.map((service) => (
+        {currentServices.map((service) => (
           <button
           className="transform transition duration-500 hover:scale-90"
             key={service._id}
@@ -180,8 +189,18 @@ const AllService = () => {
                   {service.serviceName}
                 </h3>
                 <p className="mt-3 text-start text-gray-500 text-lg">
-                  {service.serviceDescription}
-                </p>
+  {truncateDescription(service.serviceDescription, 25)}
+  {service.serviceDescription.split(' ').length > 25 && (
+    <Link
+    to={`/services/${service.serviceName}`}
+    >
+<span className="text-blue-500 cursor-pointer">
+      {' '}...Read more
+    </span>
+    </Link>
+    
+  )}
+</p>
                 <span className="block text-start mb-1 text-base font-semibold uppercase text-[#4D96B3]">
                   Price: {service.servicePrice}
                 </span>
@@ -210,7 +229,39 @@ const AllService = () => {
         ))}
       </div>
 
-
+{/* pagination */}
+      <nav className="mt-12 flex items-center justify-center gap-x-1">
+        <button
+          type="button"
+          onClick={() => setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))}
+          disabled={currentPage === 1}
+          className="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+        >
+          <svg className="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Previous</span>
+        </button>
+        <div className="flex items-center gap-x-1">
+          {Array.from({ length: Math.ceil(filteredServices.length / itemsPerPage) }).map((_, index) => (
+            <button
+              key={index + 1}
+              type="button"
+              className={`min-h-[38px] min-w-[38px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none ${currentPage === index + 1 ? 'bg-gray-100' : ''}`}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+        <button
+          type="button"
+          onClick={() => setCurrentPage((prevPage) => Math.min(prevPage + 1, Math.ceil(filteredServices.length / itemsPerPage)))}
+          disabled={currentPage === Math.ceil(filteredServices.length / itemsPerPage)}
+          className="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+        >
+          <span>Next</span>
+          <svg className="flex-shrink-0 w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </nav>
 
     </div>
     </div>
